@@ -32,7 +32,7 @@ export default function Question() {
                 <p className="font-helvetica text-[15px] leading-[19px] lg:text-lg mb-6">Заполните форму ниже, и наш специалист свяжется с вами в ближайшее время.</p>
                 <div className="xl:flex justify-between mb-4">
                     <label htmlFor="phone" className="font-helvetica text-lg after:content-['*'] after:ml-0.5 after:text-red-500">Телефон</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+375 (99) 999-99-99" pattern="+375 (29) 999-99-99" required value={phone} onChange={(e) => setPhone(e.target.value)} className="h-[64px] w-full xl:w-[65%] text-[18px] border-[#063536] border-[1px] px-6 py-5 font-helvetica focus:outline-none focus:border-[#E97550]" />
+                    <input type="tel" id="phone" name="phone" placeholder="+375 (99) 999-99-99" required value={phone} onChange={(e) => setPhone(e.target.value)} className="h-[64px] w-full xl:w-[65%] text-[18px] border-[#063536] border-[1px] px-6 py-5 font-helvetica focus:outline-none focus:border-[#E97550]" />
                 </div>
                 <div className="xl:flex justify-between mb-8">
                     <label htmlFor="review" className="font-helvetica text-lg">Комментарий</label>

@@ -73,7 +73,6 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
                                 id="phone"
                                 name="phone"
                                 placeholder="+375 (99) 999-99-99"
-                                pattern="+375 (29) 999-99-99"
                                 required
                                 value={phone}
                                 onChange={(e) => setPhone(e.target.value)}
