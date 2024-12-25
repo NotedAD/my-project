@@ -2,20 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/Gilroy-ExtraBold.ttf') format('truetype');
+  font-weight: 800; 
+  font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@font-face {
+  font-family: 'Helvetica';
+  src: url('/fonts/helvetica_bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica';
+  src: url('/fonts/helvetica_regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Involve';
+  src: url('/fonts/Involve-Medium.otf') format('opentype');
+  font-weight: 500; 
+  font-style: normal;
+}
+
+
+@layer utilities {
+  .btn-custom {
+    @apply py-2 px-2 font-gilroy text-[20px] w-[230px];
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.checkbox-custom {
+  @apply appearance-none border-2 border-[#063536] bg-white rounded relative;
+  width: 24px;
+  height: 24px;
+  transition: background-color 0.3s, border-color 0.3s;
+  cursor: pointer;
 }
+
+.checkbox-custom:checked {
+  background-color: #fff; 
+  border-color: #063536;
+}
+
+.checkbox-custom:checked::after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 6px;
+  width: 8px;
+  height: 16px;
+  border: solid #E97550;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-custom:focus {
+  outline: none; 
+}
+

@@ -8,9 +8,10 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      fontFamily: {
+        gilroy: ['Gilroy', 'sans-serif'],
+        helvetica: ['Helvetica', 'sans-serif'],
+        involve: ['Involve', 'sans-serif'],
       },
     },
   },
