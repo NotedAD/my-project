@@ -112,7 +112,7 @@ export default function TextSlider() {
            <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0)), url('./img/imgslickFirst.png')",
+              backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0)), url('./img/imgslickFirst.jpg')",
             }}
           />
           <p className="absolute top-0 left-0 p-4 lg:p-6 rounded font-gilroy text-[18px] lg:text-[22px] text-white">
@@ -124,7 +124,7 @@ export default function TextSlider() {
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0)), url('./img/imgslickSecond.png')"
+              backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0)), url('./img/imgslickSecond.jpg')"
             }}
           />
           <p className="absolute top-0 left-0 p-4 lg:p-6 rounded font-gilroy text-[18px] lg:text-[22px] text-white">
