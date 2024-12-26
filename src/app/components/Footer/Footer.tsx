@@ -5,7 +5,7 @@ export default function Footer() {
     return (
         <footer className='text-white bg-[#114142] py-16 text-center xl:text-left'>
             <div className='2xl:w-[1356px] mx-auto xl:flex gap-44'>
-                <div className='flex flex-col items-center xl:items-start mb-9 xl:mb-0'>
+                <div className='flex flex-col items-center xl:items-start mb-9 xl:mb-0 font-helvetica'>
                     <div className='flex items-end'>
                         <Image
                             src="./img/house.svg"
@@ -13,7 +13,7 @@ export default function Footer() {
                             height={64}
                             alt="Logo"
                         />
-                        <div className='ml-2 font-helvetica text-left'>
+                        <div className='ml-2 text-left'>
                             <p>Строительные решения</p>
                             <p className='text-xs'>строительная компания</p>
                         </div>
