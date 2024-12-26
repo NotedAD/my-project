@@ -25,7 +25,7 @@ export default function RootLayout({
             <Header />
             <TextSlider />
           </div>
-          <main>{children}</main>
+          {children}
           <Footer />
         </FormProvider>
       </body>
