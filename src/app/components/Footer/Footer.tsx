@@ -22,8 +22,8 @@ export default function Footer() {
                         <p>© 2024 ООО “Строительные решения”</p>
                     </div>
                 </div>
-                <div className='mb-6 xl:mb-0'>
-                    <p className='font-helvetica text-lg mb-4'>Адрес офиса</p>
+                <div className='mb-6 xl:mb-0 font-helvetica'>
+                    <p className='text-lg mb-4'>Адрес офиса</p>
                     <p className='text-[#FBFDFD99] mb-2'>
                         РБ, г. Минск,<br className='xl:block hidden' />
                         ул. Ленина, 1
@@ -33,13 +33,13 @@ export default function Footer() {
                         сб - вс: с 10:00 до 16:00
                     </p>
                 </div>
-                <div>
+                <div className='font-helvetica'>
                     <p className='text-[#FBFDFD99] mb-7'>ООО “Строительные решения”<br />
                         Юридический адрес:<br />
                         РБ, г. Минск, ул. Ленина, 1<br />
                         УНП: 111111111
                     </p>
-                    <p>Разработка сайта: <Link href="https://web-space.by/" className='text-[#E97550] font-helvetica text-lg hover:text-[#F39779]'>Web-space.by</Link></p>
+                    <p>Разработка сайта: <Link href="https://web-space.by/" className='text-[#E97550] text-lg hover:text-[#F39779]'>Web-space.by</Link></p>
                 </div>
             </div>
         </footer>
