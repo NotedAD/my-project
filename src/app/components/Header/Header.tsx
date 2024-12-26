@@ -35,16 +35,16 @@ export default function Header() {
             style={{ cursor: 'pointer' }}
           />
         </div>
-        <div className='xl:flex hidden justify-between gap-16 items-center '>
+        <div className='xl:flex hidden justify-between gap-16 items-center font-helvetica'>
           <div>
-            <p className='font-helvetica text-lg'>Адрес офиса:</p>
+            <p className='text-lg'>Адрес офиса:</p>
             <p className='text-[#FBFDFD99]'>
               РБ, г. Минск,<br />
               ул. Ленина, 1
             </p>
           </div>
-          <div>
-            <p className='font-helvetica text-lg'>+375 99 999 99 99</p>
+          <div className='font-helvetica'>
+            <p className='text-lg'>+375 99 999 99 99</p>
             <p className='text-[#FBFDFD99]'>
               пн - пт: c 09:00 до 18:00<br />
               сб - вс: с 10:00 до 16:00
