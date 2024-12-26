@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import Header from "./components/Header/Header";
 import "./globals.css";
-import Footer from './components/Footer/Footer';
 import { FormProvider } from "./contexts/FormContext";
+import Header from "./components/Header/Header";
+import TextSlider from "./components/Slider/TextSlider";
+import Footer from './components/Footer/Footer';
 
 export const metadata: Metadata = {
   title: "Test",
@@ -20,7 +21,10 @@ export default function RootLayout({
         className={`antialiased`}
       >
         <FormProvider> 
-          <Header />
+          <div className="bg-no-repeat bg-cover background-image" style={{ backgroundImage: "url('./img/sliderFirst.png')" }}>
+            <Header />
+            <TextSlider />
+          </div>
           <main>{children}</main>
           <Footer />
         </FormProvider>

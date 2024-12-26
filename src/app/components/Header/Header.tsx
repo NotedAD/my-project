@@ -11,7 +11,7 @@ export default function Header() {
   const closePopup = () => setPopupOpen(false);
 
   return (
-    <header className='px-5 xl:px-0 absolute text-white  w-full mt-4 xl:mt-6 pb-6 xl:border-b-[1px] border-[#FBFDFD99] z-10'>
+    <header className='px-5 xl:px-0 text-white w-full py-4 xl:py-6 xl:border-b-[1px] border-[#FBFDFD99] z-10'>
       <div className='2xl:w-[1356px] mx-auto flex justify-between items-center'>
         <div className='flex items-end'>
           <Image
