@@ -21,7 +21,7 @@ export default function RootLayout({
         className={`antialiased`}
       >
         <FormProvider> 
-          <div className="bg-no-repeat bg-cover background-image" style={{ backgroundImage: "url('./img/sliderFirst.png')" }}>
+          <div className="bg-no-repeat bg-cover background-image" style={{ backgroundImage: "url('./img/imgBackground.jpg')" }}>
             <Header />
             <TextSlider />
           </div>
