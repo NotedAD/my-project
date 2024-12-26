@@ -51,10 +51,10 @@ export default function TextSlider() {
   const closePopup = () => setPopupOpen(false);
 
   return (
-    <div className="xl:flex justify-center items-center h-[100vh] lg:h-[109vh] mb-[72px] lg:mb-36 pt-28 " style={{ backgroundImage: "url('./img/sliderFirst.png')" }}>
+    <div className="flex xl:justify-center items-start content-between lg:h-screen mb-[72px] lg:mb-36 pt-6 lg:pt-32 flex-wrap">
       <div className="w-full xl:w-[45%] px-5 xl:px-0">
         <p
-          className={`w-full xl:w-5/6 text-white font-involve text-[28px] leading-[33px] lg:text-[64px] lg:leading-[83px] transition-opacity duration-500 ease-in-out mb-3 xl:mb-4 ${isAnimating ? "opacity-0" : "opacity-100"}`}
+          className={`w-full xl:w-5/6 text-white font-involve text-[28px] leading-[33px] lg:text-[50px] xl:text-[64px] lg:leading-[83px] transition-opacity duration-500 ease-in-out mb-3 xl:mb-4 ${isAnimating ? "opacity-0" : "opacity-100"}`}
         >
           {texts[currentIndex].main}
         </p>
@@ -68,10 +68,17 @@ export default function TextSlider() {
         </button>
       </div>
 
-      <div className="flex xl:grid grid-cols-2 pl-5 xl:pl-0">
-        <div className="p-6 h-[272px] w-[272px] bg-[#114142] flex flex-col justify-between text-white">
-          <p className="font-gilroy text-[18px] lg:text-[22px]">Оформление рассрочки по ставке от 15% годовых</p>
-          <Link href="/#" className="group flex text-[18px] font-helvetica hover:text-[#F39779]">
+      <div
+        className="flex xl:grid grid-cols-2 pl-5 xl:pl-0 overflow-x-auto hide-scrollbar"
+      >
+        <div className="p-4 lg:p-6 h-[176px] w-[176px] lg:h-[272px] lg:w-[272px] bg-[#114142] flex flex-col justify-between text-white flex-shrink-0">
+          <p className="font-gilroy text-[18px] lg:text-[22px] leading-5 lg:leading-7">
+            Оформление рассрочки по ставке от 15% годовых
+          </p>
+          <Link
+            href="/#"
+            className="group flex text-[16px] lg:text-[18px] font-helvetica hover:text-[#F39779]"
+          >
             Подробнее
             <div className="flex items-end">
               <svg
@@ -100,26 +107,39 @@ export default function TextSlider() {
         </div>
 
         <div
-          className="relative flex justify-center items-center bg-cover bg-center h-[272px] w-[272px]"
-          style={{ backgroundImage: "url('./img/imgslickFirst.png')" }}
+          className="relative flex justify-center items-center bg-cover bg-center h-[176px] w-[176px] lg:h-[272px] lg:w-[272px] flex-shrink-0"
         >
-          <p className="absolute top-0 left-0 p-6 rounded font-gilroy text-[18px] lg:text-[22px] text-white">
+           <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0)), url('./img/imgslickFirst.png')",
+            }}
+          />
+          <p className="absolute top-0 left-0 p-4 lg:p-6 rounded font-gilroy text-[18px] lg:text-[22px] text-white">
             Барнхаусы
           </p>
         </div>
 
-        <div
-          className="hidden relative xl:flex justify-center items-center bg-cover bg-center h-[272px] w-[272px]"
-          style={{ backgroundImage: "url('./img/imgslickSecond.png')" }}
-        >
-          <p className="absolute top-0 left-0 p-6 rounded font-gilroy text-[22px] text-white">
+        <div className="relative flex justify-center items-center h-[176px] w-[176px] lg:h-[272px] lg:w-[272px] flex-shrink-0">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0)), url('./img/imgslickSecond.png')"
+            }}
+          />
+          <p className="absolute top-0 left-0 p-4 lg:p-6 rounded font-gilroy text-[18px] lg:text-[22px] text-white">
             Таунхаусы
           </p>
         </div>
 
-        <div className="hidden p-6 h-[272px] w-[272px] bg-[#114142] xl:flex flex-col justify-between text-white">
-          <p className="font-gilroy text-[22px]">Скидка до 5% при полной предоплате за проект</p>
-          <Link href="/#" className="group flex text-[18px] font-helvetica hover:text-[#F39779]">
+        <div className="p-4 lg:p-6 h-[176px] w-[176px] lg:h-[272px] lg:w-[272px] bg-[#114142] flex flex-col justify-between text-white flex-shrink-0">
+          <p className="font-gilroy text-[18px] lg:text-[22px] leading-5 lg:leading-7">
+            Скидка до 5% при полной предоплате за проект
+          </p>
+          <Link
+            href="/#"
+            className="group flex text-[16px] lg:text-[18px] font-helvetica hover:text-[#F39779]"
+          >
             Подробнее
             <div className="flex items-end">
               <svg
@@ -147,7 +167,7 @@ export default function TextSlider() {
           </Link>
         </div>
       </div>
-      <div className="absolute bottom-[3rem] lg:bottom-[-3rem] left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center space-x-2">
+      <div className="mt-9 flex justify-center items-center space-x-2 w-full pb-6 xl:pb-16">
         {texts.map((_, index) => (
           <button
             key={index}
