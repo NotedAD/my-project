@@ -97,15 +97,16 @@ export default function Question() {
                         />
                         <label htmlFor="agree" className="text-[14px] leading-4 lg:text-[16px] font-helvetica ml-3 cursor-pointer">Согласие на обработку персональных данных</label>
                     </div>
-                    {errorMessage && (
-                        <p className="text-red-500 text-[14px] mb-2 text-center">
-                            {errorMessage}
-                        </p>
-                    )}
+                   
                     <button type="submit" className="bg-[#E97550] text-white btn-custom hover:bg-[#F39779] hover:border-[#F39779] transition-all duration-300 ease-in-out">
                         Отправить
                     </button>
                 </div>
+                {errorMessage && (
+                        <p className="text-red-500 text-[14px] mb-2 text-center">
+                            {errorMessage}
+                        </p>
+                    )}
             </form>
         </div>
     );
