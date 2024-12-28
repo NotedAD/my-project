@@ -9,7 +9,6 @@ export default function Question() {
     const [phone, setPhone] = useState('');
     const [comment, setComment] = useState('');
     const [agree, setAgree] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
     const [notification, setNotification] = useState({ message: '', type: '' });
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -18,7 +17,6 @@ export default function Question() {
         const isPhoneValid = /^\+\d{3} \(\d{2}\) \d{3}-\d{2}-\d{2}$/.test(phone);
 
         if (!isPhoneValid) {
-          setErrorMessage('Введите полный номер телефона.');
           setNotification({ message: 'Ошибка: номер телефона неполный.', type: 'error' });
           return;
         }
@@ -28,7 +26,6 @@ export default function Question() {
             setPhone('');
             setComment('');
             setAgree(false);
-            setErrorMessage('');
             setNotification({ message: 'Сообщение успешно отправлено!', type: 'success' });
         } else {
             setNotification({ message: 'Ошибка отправки. Попробуйте еще раз.', type: 'error' });
@@ -108,11 +105,6 @@ export default function Question() {
                         Отправить
                     </button>
                 </div>
-                {errorMessage && (
-                        <p className="text-red-500 text-[14px] mb-2 text-center">
-                            {errorMessage}
-                        </p>
-                    )}
             </form>
         </div>
     );

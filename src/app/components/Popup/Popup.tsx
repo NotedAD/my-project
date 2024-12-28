@@ -13,7 +13,6 @@ interface PopupProps {
 
 const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
     const { phone, setPhone, comment, setComment, agree, setAgree } = useFormContext();
-    const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [notification, setNotification] = useState({ message: '', type: '' });
 
     useEffect(() => {
@@ -34,7 +33,6 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
         const isPhoneValid = /^\+\d{3} \(\d{2}\) \d{3}-\d{2}-\d{2}$/.test(phone);
 
         if (!isPhoneValid) {
-          setErrorMessage('Введите полный номер телефона.');
           setNotification({ message: 'Ошибка: номер телефона неполный.', type: 'error' });
           return;
         }
@@ -43,7 +41,6 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
         if (success) {
             setPhone('');
             setComment('');
-            setErrorMessage(null);
             setNotification({ message: 'Сообщение успешно отправлено!', type: 'success' });
         } else {
             setNotification({ message: 'Ошибка отправки. Попробуйте еще раз.', type: 'error' });
@@ -152,11 +149,6 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
                                 Согласие на обработку персональных данных
                             </label>
                         </div>
-                        {errorMessage && (
-                            <p className="text-red-500 text-[14px] mb-2 text-center">
-                                {errorMessage}
-                            </p>
-                        )}
                         <button type="submit" className="bg-[#E97550] text-white btn-custom hover:bg-[#F39779] hover:border-[#F39779] transition-all duration-300 ease-in-out">
                             Отправить
                         </button>
