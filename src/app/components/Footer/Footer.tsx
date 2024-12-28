@@ -39,7 +39,7 @@ export default function Footer() {
                         РБ, г. Минск, ул. Ленина, 1<br />
                         УНП: 111111111
                     </p>
-                    <p>Разработка сайта: <Link href="https://web-space.by/" className='text-[#E97550] text-lg hover:text-[#F39779]'>Web-space.by</Link></p>
+                    <p>Разработка сайта: <Link href="https://web-space.by/" className='text-[#E97550] text-lg hover:text-[#F39779] transition-all duration-300 ease-in-out'>Web-space.by</Link></p>
                 </div>
             </div>
         </footer>

@@ -51,7 +51,11 @@ export default function Header() {
             </p>
           </div>
           <div>
-            <button className='border-2 border-[#E97550] text-white btn-custom hover:text-[#F39779] hover:border-[#F39779]' onClick={openPopup}>Заказать звонок</button>
+            <button
+              className="border-2 border-[#E97550] text-white btn-custom hover:text-[#F39779] hover:border-[#F39779] transition-all duration-300 ease-in-out"
+              onClick={openPopup}>
+              Заказать звонок
+            </button>
           </div>
         </div>
       </div>

@@ -1,9 +1,10 @@
-'use client'
+'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useFormContext } from '../../contexts/FormContext';
 import Image from 'next/image';
 import { sendMessage } from '../../utils/sendMessage';
+import { validatePhone } from '@/app/utils/validatePhone';
 
 interface PopupProps {
     isOpen: boolean;
@@ -12,20 +13,56 @@ interface PopupProps {
 
 const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
     const { phone, setPhone, comment, setComment, agree, setAgree } = useFormContext();
+    const [isValid, setIsValid] = useState(true);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+    const [notification, setNotification] = useState({ message: '', type: '' });
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.classList.add('overflow-hidden');
+        } else {
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        return () => {
+            document.body.classList.remove('overflow-hidden');
+        };
+    }, [isOpen]);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        if (!validatePhone(phone)) {
+            setIsValid(false);
+            setErrorMessage('Введите номер телефона в формате +375 (99) 999-99-99, +375 (99) 9999999, +375 (99) 999 99 99.');
+            return;
+        }
+
         const success = await sendMessage(phone, comment, agree);
         if (success) {
             setPhone('');
             setComment('');
+            setErrorMessage(null);
+            setNotification({ message: 'Сообщение успешно отправлено!', type: 'success' });
+        } else {
+            setNotification({ message: 'Ошибка отправки. Попробуйте еще раз.', type: 'error' });
         }
+
+        setTimeout(() => setNotification({ message: '', type: '' }), 3000);
     };
 
     if (!isOpen) return null;
 
     return (
         <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50 px-5 lg:px-0">
+            {notification.message && (
+                <div
+                    className={`fixed top-2 left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-lg text-center text-white z-50 ${notification.type === 'success' ? 'bg-green-500' : 'bg-red-500'
+                        }`}
+                >
+                    {notification.message}
+                </div>
+            )}
             <div className="bg-white w-[660px] relative">
                 <button
                     className="absolute top-3 right-3 text-white bg-[#11414299] w-9 h-9 rounded-full flex items-center justify-center"
@@ -76,7 +113,8 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
                                 required
                                 value={phone}
                                 onChange={(e) => setPhone(e.target.value)}
-                                className="h-[64px] w-[100%] text-[18px] border-[#063536] border-[1px] px-6 py-5 font-helvetica focus:outline-none focus:border-[#E97550] text-[#063536]"
+                                className={`h-[64px] w-[100%] text-[18px] border-[1px] px-6 py-5 font-helvetica focus:outline-none ${isValid ? 'border-[#063536]' : 'border-red-500'
+                                    } text-[#063536]`}
                             />
                         </div>
                         <div className="w-full mb-4">
@@ -108,7 +146,12 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
                                 Согласие на обработку персональных данных
                             </label>
                         </div>
-                        <button type="submit" className="bg-[#E97550] text-white btn-custom hover:bg-[#F39779] hover:border-[#F39779] py-2 px-6 rounded">
+                        {errorMessage && (
+                            <p className="text-red-500 text-[14px] mb-2 text-center">
+                                {errorMessage}
+                            </p>
+                        )}
+                        <button type="submit" className="bg-[#E97550] text-white btn-custom hover:bg-[#F39779] hover:border-[#F39779] transition-all duration-300 ease-in-out">
                             Отправить
                         </button>
                     </form>

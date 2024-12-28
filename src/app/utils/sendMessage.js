@@ -5,7 +5,7 @@ export const sendMessage = async (phone, comment, agree) => {
     }
   
     try {
-      const response = await fetch('https://back-telegram.vercel.app/send-message', {
+      const response = await fetch('http://localhost:3001/send-message', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -63,7 +63,7 @@ export default function TextSlider() {
         >
           {texts[currentIndex].sub}
         </p>
-        <button className="border-2 border-[#E97550] bg-[#E97550] text-white btn-custom hover:bg-[#F39779] hover:border-[#F39779] mb-6 xl:mb-0" onClick={openPopup}>
+        <button className="border-2 border-[#E97550] bg-[#E97550] text-white btn-custom hover:bg-[#F39779] hover:border-[#F39779] transition-all duration-300 ease-in-out mb-6 xl:mb-0" onClick={openPopup}>
           Узнать стоимость
         </button>
       </div>
@@ -77,7 +77,7 @@ export default function TextSlider() {
           </p>
           <Link
             href="/#"
-            className="group flex text-[16px] lg:text-[18px] font-helvetica hover:text-[#F39779]"
+            className="group flex text-[16px] lg:text-[18px] font-helvetica hover:text-[#F39779] transition-all duration-300 ease-in-out"
           >
             Подробнее
             <div className="flex items-end">
@@ -87,7 +87,7 @@ export default function TextSlider() {
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="stroke-[#E97550] group-hover:stroke-[#F39779]"
+                className="stroke-[#E97550] group-hover:stroke-[#F39779] transition-all duration-300 ease-in-out"
               >
                 <path
                   d="M7 17L17 7"
@@ -138,7 +138,7 @@ export default function TextSlider() {
           </p>
           <Link
             href="/#"
-            className="group flex text-[16px] lg:text-[18px] font-helvetica hover:text-[#F39779]"
+            className="group flex text-[16px] lg:text-[18px] font-helvetica hover:text-[#F39779] transition-all duration-300 ease-in-out"
           >
             Подробнее
             <div className="flex items-end">
@@ -148,7 +148,7 @@ export default function TextSlider() {
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="stroke-[#E97550] group-hover:stroke-[#F39779]"
+                className="stroke-[#E97550] group-hover:stroke-[#F39779] transition-all duration-300 ease-in-out"
               >
                 <path
                   d="M7 17L17 7"
@@ -171,7 +171,7 @@ export default function TextSlider() {
         {texts.map((_, index) => (
           <button
             key={index}
-            className={`h-2 rounded-full transition-all duration-300 ${currentIndex === index ? "w-6 bg-[#E97550]" : "w-2 bg-[#FBFDFD]"}`}
+            className={`h-2 rounded-full transition-all duration-300 ${currentIndex === index ? "w-6 bg-[#E97550]" : "w-2 bg-[#FBFDFD]"} hover:bg-[#F39779] transition-all duration-300 ease-in-out`}
             onClick={() => goToSlide(index)}
             aria-label={`Перейти к слайду ${index + 1}`}
           ></button>
