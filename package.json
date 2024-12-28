@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@react-google-maps/api": "^2.20.5",
+    "@react-input/mask": "^2.0.4",
     "dotenv": "^16.4.7",
+    "imaskjs": "^1.1.0",
     "next": "15.1.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
@@ -20,6 +22,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/react-input-mask": "^3.0.6",
     "eslint": "^9",
     "eslint-config-next": "15.1.2",
     "postcss": "^8",

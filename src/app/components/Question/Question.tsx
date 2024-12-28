@@ -3,23 +3,24 @@
 import Image from 'next/image'
 import { useState } from 'react';
 import { sendMessage } from '../../utils/sendMessage';
-import { validatePhone } from '@/app/utils/validatePhone';
+import { useMask } from '@react-input/mask';
 
 export default function Question() {
     const [phone, setPhone] = useState('');
     const [comment, setComment] = useState('');
     const [agree, setAgree] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-    const [isValid, setIsValid] = useState(true);
     const [notification, setNotification] = useState({ message: '', type: '' });
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (!validatePhone(phone)) {
-            setIsValid(false);
-            setErrorMessage('Введите номер телефона в формате +375 (99) 999-99-99, +375 (99) 9999999, +375 (99) 999 99 99.');
-            return;
+        const isPhoneValid = /^\+\d{3} \(\d{2}\) \d{3}-\d{2}-\d{2}$/.test(phone);
+
+        if (!isPhoneValid) {
+          setErrorMessage('Введите полный номер телефона.');
+          setNotification({ message: 'Ошибка: номер телефона неполный.', type: 'error' });
+          return;
         }
 
         const success = await sendMessage(phone, comment, agree);
@@ -36,6 +37,11 @@ export default function Question() {
         setTimeout(() => setNotification({ message: '', type: '' }), 3000);
     };
 
+    const inputRef = useMask({
+        mask: '+375 (__) ___-__-__',
+        replacement: { _: /\d/ },
+    });
+      
     return (
         <div className="relative flex flex-wrap xl:flex-nowrap flex-col-reverse xl:flex-row justify-center text-[#063536] mb-[72px] lg:mb-36 2xl:w-[1356px] mx-auto px-5 xl:px-0">
             {notification.message && (
@@ -67,8 +73,8 @@ export default function Question() {
                         required
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
-                        className={`h-[64px] w-full xl:w-[65%] text-[18px] border-[1px] px-6 py-5 font-helvetica focus:outline-none ${isValid ? 'border-[#063536]' : 'border-red-500'
-                            }`}
+                        ref={inputRef}
+                        className={'h-[64px] w-full xl:w-[65%] text-[18px] border-[#063536] border-[1px] px-6 py-5 font-helvetica focus:outline-none focus:border-[#E97550]'}
                     />
                 </div>
                 <div className="xl:flex justify-between mb-8">

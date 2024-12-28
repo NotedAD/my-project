@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useFormContext } from '../../contexts/FormContext';
 import Image from 'next/image';
 import { sendMessage } from '../../utils/sendMessage';
-import { validatePhone } from '@/app/utils/validatePhone';
+import { useMask } from '@react-input/mask';
 
 interface PopupProps {
     isOpen: boolean;
@@ -13,7 +13,6 @@ interface PopupProps {
 
 const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
     const { phone, setPhone, comment, setComment, agree, setAgree } = useFormContext();
-    const [isValid, setIsValid] = useState(true);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [notification, setNotification] = useState({ message: '', type: '' });
 
@@ -32,10 +31,12 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (!validatePhone(phone)) {
-            setIsValid(false);
-            setErrorMessage('Введите номер телефона в формате +375 (99) 999-99-99, +375 (99) 9999999, +375 (99) 999 99 99.');
-            return;
+        const isPhoneValid = /^\+\d{3} \(\d{2}\) \d{3}-\d{2}-\d{2}$/.test(phone);
+
+        if (!isPhoneValid) {
+          setErrorMessage('Введите полный номер телефона.');
+          setNotification({ message: 'Ошибка: номер телефона неполный.', type: 'error' });
+          return;
         }
 
         const success = await sendMessage(phone, comment, agree);
@@ -50,6 +51,11 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
 
         setTimeout(() => setNotification({ message: '', type: '' }), 3000);
     };
+
+    const inputRef = useMask({
+        mask: '+375 (__) ___-__-__',
+        replacement: { _: /\d/ },
+    });
 
     if (!isOpen) return null;
 
@@ -112,9 +118,9 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
                                 placeholder="+375 (99) 999-99-99"
                                 required
                                 value={phone}
+                                ref={inputRef}
                                 onChange={(e) => setPhone(e.target.value)}
-                                className={`h-[64px] w-[100%] text-[18px] border-[1px] px-6 py-5 font-helvetica focus:outline-none ${isValid ? 'border-[#063536]' : 'border-red-500'
-                                    } text-[#063536]`}
+                                className={'h-[64px] w-[100%] text-[18px] border-[#063536] border-[1px] px-6 py-5 font-helvetica focus:outline-none focus:border-[#E97550]  text-[#063536]'}
                             />
                         </div>
                         <div className="w-full mb-4">
